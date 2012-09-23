@@ -10,23 +10,8 @@
     <ul id="todo-list">
     </ul>
   </section>
-  <!-- This footer should hidden by default and shown when there are todos -->
   <footer id="footer">
-    <!-- This should be `0 items left` by default -->
-    <span id="todo-count"><strong>1</strong> item left</span>
-    <!-- Remove this if you don't implement routing -->
-    <ul id="filters">
-      <li>
-        <a class="selected" href="#/">All</a>
-      </li>
-      <li>
-        <a href="#/active">Active</a>
-      </li>
-      <li>
-        <a href="#/completed">Completed</a>
-      </li>
-    </ul>
-    <button id="clear-completed">Clear completed (1)</button>
+    <span id="todo-count"><strong>0</strong> items</span>
   </footer>
 </section>
 <footer id="info">
@@ -37,7 +22,7 @@
 </footer>
 
 <script type='text/template' id='item-template'>
-<div class="view" data-id="<%%- id %>">
+  <div class="view" data-id="<%%- id %>">
     <input class="toggle" type="checkbox">
     <label><%%- title %></label>
     <button class="destroy"></button>

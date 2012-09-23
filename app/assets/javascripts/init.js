@@ -78,10 +78,11 @@ init = function() {
     addOne: function(todo) {
       var view = new TodoView({model: todo, id: 'todo-' + todo.id});
       $('ul#todo-list').append(view.render().el);
+      this.$el.find('#todo-count > strong').html(this.collection.length);
     },
 
     addAll: function() {
-      this.collection.each(this.addOne);
+      this.collection.each(_.bind(this.addOne, this));
     },
 
     createOnEnter: function(e) {
@@ -93,6 +94,7 @@ init = function() {
 
     remove: function(todo) {
       this.$el.find('#todo-' + todo.id).remove();
+      this.$el.find('#todo-count > strong').html(this.collection.length);
     }
 
   });
