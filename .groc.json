@@ -1,0 +1,9 @@
+{
+  "glob": ["README.md",
+           "app/assets/javascripts/init.js",
+           "config/routes.rb",
+           "app/controllers/todos_controller.rb",
+           "app/views/layouts/application.html.erb",
+           "app/views/home/index.html.erb"],
+  "github": true
+}
