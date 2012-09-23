@@ -15,7 +15,7 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    filtered = params[:todo].select { |k| k == 'title' }
+    filtered = params[:todo].select { |k| ['title', 'completed'].include? k }
     broadcast update: @todo if @todo.update_attributes(filtered)
     respond_with(@todo)
   end

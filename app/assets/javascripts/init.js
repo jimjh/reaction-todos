@@ -13,6 +13,7 @@ init = function() {
 
     events: {
       'click button.destroy': 'deleteOnClick',
+      'click .toggle': 'toggleOnClick',
       'dblclick .view': 'editOnDoubleClick',
       'blur .edit'      : 'close',
       'keypress .edit'  : 'updateOnEnter'
@@ -24,12 +25,21 @@ init = function() {
 
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
+      this.$el.toggleClass('completed', !!this.model.get('completed'));
       this.input = this.$('.edit');
       return this;
     },
 
     deleteOnClick: function() {
       this.model.destroy({wait: true});
+    },
+
+    toggleOnClick: function() {
+      if (this.model.get('completed')) {
+        this.model.save({completed: false}, {wait: true});
+      } else {
+        this.model.save({completed: true}, {wait: true});
+      }
     },
 
     editOnDoubleClick: function() {
