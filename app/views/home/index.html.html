@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><title>app/views/home/index.html</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="app/views/home/index.html"><meta name="groc-project-path" content="app/views/home/index.html.erb"><meta name="groc-github-url" content="https://github.com/jimjh/reaction-todos"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/jimjh/reaction-todos/blob/master/app/views/home/index.html.erb">app/views/home/index.html.erb</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="c">&lt;!--</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Most of the HTML below is boilerplate from TodoMVC.</p></div></div><div class="code"><div class="wrapper"><span class="c">--&gt;</span>
+<span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;todoapp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>todos<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;new-todo&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;What needs to be done?&quot;</span> <span class="na">autofocus</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;toggle-all&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;toggle-all&quot;</span><span class="nt">&gt;</span>Mark all as complete<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;todo-list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;footer</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;todo-count&quot;</span><span class="nt">&gt;&lt;strong&gt;</span>0<span class="nt">&lt;/strong&gt;</span> items<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/footer&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;footer</span> <span class="na">id=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Double-click to edit a todo<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;span&gt;</span>Template by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://github.com/sindresorhus&quot;</span><span class="nt">&gt;</span>Sindre Sorhus<span class="nt">&lt;/a&gt;&lt;/span&gt;</span> •
+  <span class="nt">&lt;span&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://jh-lim.com&quot;</span><span class="nt">&gt;</span>Jim Lim<span class="nt">&lt;/a&gt;&lt;/span&gt;</span> •
+  <span class="nt">&lt;span&gt;</span>Adapted from <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://todomvc.com&quot;</span><span class="nt">&gt;</span>TodoMVC<span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/footer&gt;</span>
+
+<span class="c">&lt;!--</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Here, we use templating provided by Underscore.js. It takes the <code>title</code>
+string and the <code>completed</code> boolean from the todo model and displays them.</p></div></div><div class="code"><div class="wrapper"><span class="c">--&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&#39;text/template&#39;</span> <span class="na">id=</span><span class="s">&#39;item-template&#39;</span><span class="nt">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;view&quot;</span> <span class="nx">data</span><span class="o">-</span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;&lt;%%- id %&gt;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;toggle&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;checkbox&quot;</span><span class="o">&lt;%%=</span> <span class="nx">completed</span> <span class="o">?</span> <span class="s1">&#39; checked&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="o">%&gt;&gt;</span>
+    <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;&lt;%%-</span> <span class="nx">title</span> <span class="o">%&gt;&lt;</span><span class="err">/label&gt;</span>
+    <span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;destroy&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+  <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;%%- title %&gt;&quot;</span><span class="o">&gt;</span>
+<span class="nt">&lt;/script&gt;</span></div></div></div></div></body></html>

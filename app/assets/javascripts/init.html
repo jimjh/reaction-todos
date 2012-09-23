@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><title>app/assets/javascripts/init</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="app/assets/javascripts/init"><meta name="groc-project-path" content="app/assets/javascripts/init.js"><meta name="groc-github-url" content="https://github.com/jimjh/reaction-todos"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/jimjh/reaction-todos/blob/master/app/assets/javascripts/init.js">app/assets/javascripts/init.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="cm">/*jshint strict:true unused:true*/</span>
+<span class="cm">/*global _:true Backbone:true Reaction:true $:true*/</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h1 id="todo-app">Todo App</h1>
+
+<p><code>init</code> creates the app view and configures the model-view bindings.</p></div></div><div class="code"><div class="wrapper"><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="todoview">TodoView</h2>
+
+<p>Each TodoView displays a single todo model. Changes to the model are
+automatically reflected in the view via bindings.</p></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">TodoView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Each todo is displayed in a <code>li</code> tag.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+    <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#item-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="events">Events</h3>
+
+<p>Here is a list of events that TodoView responds to.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;click button.destroy&#39;</span><span class="o">:</span> <span class="s1">&#39;deleteOnClick&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;click .toggle&#39;</span><span class="o">:</span> <span class="s1">&#39;toggleOnClick&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;dblclick .view&#39;</span><span class="o">:</span> <span class="s1">&#39;editOnDoubleClick&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;blur .edit&#39;</span>      <span class="o">:</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;keypress .edit&#39;</span>  <span class="o">:</span> <span class="s1">&#39;updateOnEnter&#39;</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="initialization">Initialization</h3>
+
+<p>When a TodoView is constructed, the <code>render</code> method is bound to the
+<code>change</code> event.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="rendering">Rendering</h3>
+
+<p>When the todo is added or updated, this method is invoked to create a
+new todo view using the template defined in <code>views/home/index.html.erb</code>.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">,</span> <span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">));</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.edit&#39;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="callbacks">Callbacks</h3>
+
+<p>The following methods are invoked when the todo is deleted, toggled,
+double-clicked, or edited. They simply map UI interactions to
+Model#destroy and Model#save.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">deleteOnClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span><span class="nx">wait</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+    <span class="p">},</span>
+
+    <span class="nx">toggleOnClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="nx">completed</span><span class="o">:</span> <span class="kc">false</span><span class="p">},</span> <span class="p">{</span><span class="nx">wait</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="nx">completed</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span> <span class="p">{</span><span class="nx">wait</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="nx">editOnDoubleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;editing&quot;</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="nx">value</span><span class="p">},</span> <span class="p">{</span><span class="nx">wait</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;editing&#39;</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="nx">updateOnEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">==</span> <span class="mi">13</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="appview">AppView</h2>
+
+<p>The entire app has one AppView, which, in this case, displays the
+collection of todos.</p></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+
+    <span class="nx">el</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoapp&#39;</span><span class="p">),</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="events">Events</h3>
+
+<p>The AppView only responds to the 'enter' event and creates a new todo.
+The other events are handled by TodoView.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;keypress #new-todo&#39;</span><span class="o">:</span> <span class="s1">&#39;createOnEnter&#39;</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="initialization">Initialization</h3>
+
+<p>When the AppView is constructed, a new reactive collection is created.
+The <code>addOne</code>, <code>addAll</code>, and <code>remove</code> methods are bound to the <code>add</code>,
+<code>reset</code>, and <code>remove</code> events respectively. Note that these events are
+also fired when changes are received from the server (not just when the
+user interacts with the UI.)</p></div></div><div class="code"><div class="wrapper">    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input#new-todo&#39;</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reaction</span><span class="p">.</span><span class="nx">Collection</span><span class="p">({</span>
+        <span class="nx">controller_name</span><span class="o">:</span> <span class="s1">&#39;todos&#39;</span><span class="p">,</span> <span class="c1">// Must correspond to rails controller name</span>
+        <span class="nx">model_name</span><span class="o">:</span> <span class="s1">&#39;todo&#39;</span>        <span class="c1">// Must correspond to rails model name</span>
+      <span class="p">});</span>
+
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addOne</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addAll</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">collection</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">;</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span>
+
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h4 id="addone">addOne</h4>
+
+<p>Invoked when a new todo model is added to the collection. Adds a new
+TodoView to the list.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">addOne</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">todo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TodoView</span><span class="p">({</span><span class="nx">model</span><span class="o">:</span> <span class="nx">todo</span><span class="p">,</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;todo-&#39;</span> <span class="o">+</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul#todo-list&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#todo-count &gt; strong&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h4 id="addall">addAll</h4>
+
+<p>Invoked when the collection first fetches a set of records from the
+server. Adds each todo individually to the list.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">addAll</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">addOne</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h4 id="createonenter">createOnEnter</h4>
+
+<p>Invoked when the user creates a new todo. Maps it to Collection#create.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">createOnEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">!=</span> <span class="mi">13</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">())</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">()},</span> <span class="p">{</span><span class="nx">wait</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h4 id="remove">remove</h4>
+
+<p>Invoked when a todo is destroyed. Removes the relevant todo from the
+list.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">remove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">todo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#todo-&#39;</span> <span class="o">+</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#todo-count &gt; strong&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="p">}</span>
+
+  <span class="p">});</span>
+
+  <span class="k">new</span> <span class="nx">AppView</span><span class="p">();</span>
+
+<span class="p">};</span></div></div></div></div></body></html>
