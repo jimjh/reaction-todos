@@ -14,6 +14,7 @@ end
 
 group :development do
   gem 'hirb'
+  gem 'debugger-pry'
 end
 
 gem 'jquery-rails'
