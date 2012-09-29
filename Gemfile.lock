@@ -1,7 +1,7 @@
 PATH
   remote: ../reaction
   specs:
-    reaction (0.0.1.1)
+    reaction (0.0.2)
       faye (>= 0.8.3)
 
 GEM
