@@ -1,8 +1,8 @@
 PATH
   remote: ../reaction
   specs:
-    reaction (0.0.2)
-      faye (>= 0.8.3)
+    reaction (0.0.3)
+      faye (~> 0.8.4)
 
 GEM
   remote: https://rubygems.org/
@@ -67,7 +67,7 @@ GEM
     eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faye (0.8.3)
+    faye (0.8.4)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
