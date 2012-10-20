@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require reaction/underscore
+//= require reaction/backbone
+//= require reaction/amplify
+//= require reaction
 //= require_tree .
 
-$(window).bind('reaction_loaded', init);
+if (_.isUndefined(window.Reaction)) {
+  $(window).bind('reaction.ready', init);
+} else {
+  init();
+}

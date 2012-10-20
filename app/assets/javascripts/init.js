@@ -151,6 +151,6 @@ init = function() {
 
   });
 
-  window.App = new AppView();
+  new AppView();
 
 };
