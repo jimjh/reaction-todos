@@ -18,8 +18,4 @@
 //= require reaction
 //= require_tree .
 
-if (_.isUndefined(window.Reaction)) {
-  $(window).bind('reaction.ready', init);
-} else {
-  init();
-}
+Reaction.on('ready', init);

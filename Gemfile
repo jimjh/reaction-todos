@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'thin'
-gem 'reaction', :path => '../reaction'
+gem 'reaction', :git => 'git@github.com:jimjh/reaction.git', :branch => 'master'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
