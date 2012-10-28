@@ -1,10 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/jimjh/reaction-todos"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/jimjh/reaction-todos/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="todo">Todo</h1>
 
-<p>A todo list built on the <a href="https://github.com/jimjh/reaction">Reaction</a> framework. This is intended to be a minimal example.</p>
+<p>A todo list built on the <a href="https://github.com/jimjh/reaction">Reaction</a> framework. This is intended to be a minimal example.
+The annotated source is available <a href="http://jimjh.github.com/reaction-todos">here</a>.</p>
 
 <h2 id="install-and-run">Install and Run</h2>
-
-<p>You need to have the <a href="https://github.com/jimjh/reaction">reaction</a> repo in the same directory as the reaction-todos repo.</p>
 
 <ol>
 <li><p>Clone.</p>
@@ -20,7 +19,7 @@ $&gt; bundle install
 <li><p>Migrate.</p>
 
 <p><code>bash
-$&gt; rake db:migrate
+$&gt; rake db:setup
 </code></p></li>
 <li><p>Run.</p>
 
@@ -38,22 +37,17 @@ browser are immediately updated in the other.</p>
 <p>Except for the following places, Todos is just a regular Rails app.</p>
 
 <ul>
-<li><code>Gemfile</code> Added the reaction and thin gems</li>
-<li><code>config/routes.rb</code> Added <code>mount_reaction</code> to start the push server</li>
-<li><code>app/controllers/todos_controller.rb</code> Included <code>Reaction::Publisher</code> and used
+<li><code>Gemfile</code> - added the reaction and thin gems</li>
+<li><a href="http://jimjh.github.com/reaction-todos/config/routes.html">config/routes.rb</a> - added <code>mount_reaction</code> to start the push server</li>
+<li><a href="http://jimjh.github.com/reaction-todos/app/controllers/todos_controller.html">app/controllers/todos_controller.rb</a> - included <code>Reaction::Rails::Publisher</code> and used
 <code>respond_with</code> in every action</li>
-<li><p><code>app/views/layouts/application.html.erb</code>: Added script tag for <code>require.js</code></p>
-
-<p>```html</p>
-
-<script data-main='/assets/javascripts/main' src='/assets/javascripts/require.js'></script>
-
-<p>```</p></li>
+<li><a href="http://jimjh.github.com/reaction-todos/app/assets/javascripts/application.js">app/assets/javascripts/application.js</a> - imported backbone, amplify, and
+reaction</li>
 </ul>
 
-<p>Finally, <code>app/assets/javascripts/init.js</code> contains a regular Backbone app,
+<p>Finally, <a href="http://jimjh.github.com/reaction-todos/app/assets/javascripts/init.html">app/assets/javascripts/init.js</a> contains a regular Backbone app,
 adapted from the Backbone <a href="http://backbonejs.org/docs/todos.html">tutorial</a>.  The templates are in
-<code>app/views/home/index.html.erb</code>.</p>
+<a href="http://jimjh.github.com/reaction-todos/app/views/home/index.html.html">app/views/home/index.html.erb</a>.</p>
 
 <h2 id="credits">Credits</h2>
 
