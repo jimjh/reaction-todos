@@ -7,6 +7,8 @@ init = function() {
 
   'use strict';
 
+  Reaction.config.paths.reaction = 'http://localhost:9292'
+
   // ## TodoView
   // Each TodoView displays a single todo model. Changes to the model are
   // automatically reflected in the view via bindings.

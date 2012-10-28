@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jimjh/reaction.git
-  revision: 1d8d5326117635cf5002aefe4ba3e20130cb1b40
+  revision: ed8a1f7a7e6f8735e10f1d5e80ba0bb0a41d7d5f
   branch: feature_35352201
   specs:
     reaction (0.0.5)
