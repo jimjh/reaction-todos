@@ -3,7 +3,6 @@ A todo list built on the [Reaction][1] framework. This is intended to be a minim
 The annotated source is available [here][6].
 
 ## Install and Run
-You need to have the [reaction][1] repo in the same directory as the reaction-todos repo.
 
 1. Clone.
 
@@ -20,7 +19,7 @@ You need to have the [reaction][1] repo in the same directory as the reaction-to
 1. Migrate.
 
   ```bash
-  $> rake db:migrate
+  $> rake db:setup
   ```
 
 1. Run.
@@ -40,11 +39,8 @@ Except for the following places, Todos is just a regular Rails app.
 * [config/routes.rb][5] - added `mount_reaction` to start the push server
 * [app/controllers/todos_controller.rb][7] - included `Reaction::Rails::Publisher` and used
   `respond_with` in every action
-* [app/views/layouts/application.html.erb][8] - added script tag for `require.js`
-
-  ```html
-    <script data-main='/assets/javascripts/main' src='/assets/javascripts/require.js'></script>
-  ```
+* [app/assets/javascripts/application.js][8] - imported backbone, amplify, and
+  reaction
 
 Finally, [app/assets/javascripts/init.js][9] contains a regular Backbone app,
 adapted from the Backbone [tutorial][4].  The templates are in
@@ -61,6 +57,6 @@ todo list.
   [5]: http://jimjh.github.com/reaction-todos/config/routes.html
   [6]: http://jimjh.github.com/reaction-todos
   [7]: http://jimjh.github.com/reaction-todos/app/controllers/todos_controller.html
-  [8]: http://jimjh.github.com/reaction-todos/app/views/layouts/application.html.html
+  [8]: http://jimjh.github.com/reaction-todos/app/assets/javascripts/application.js
   [9]: http://jimjh.github.com/reaction-todos/app/assets/javascripts/init.html
   [0]: http://jimjh.github.com/reaction-todos/app/views/home/index.html.html
