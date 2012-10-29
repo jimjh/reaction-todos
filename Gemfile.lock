@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/jimjh/reaction.git
-  revision: 474aee948da0acc5778888d1ff38470c51e86c54
+  revision: 45e485b40f45897b7af93c57ca9b6b24340e4da1
   branch: master
   specs:
-    reaction (0.1.0)
+    reaction (0.1.1)
       faye (~> 0.8.4)
 
 GEM
