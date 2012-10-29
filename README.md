@@ -57,6 +57,6 @@ todo list.
   [5]: http://jimjh.github.com/reaction-todos/config/routes.html
   [6]: http://jimjh.github.com/reaction-todos
   [7]: http://jimjh.github.com/reaction-todos/app/controllers/todos_controller.html
-  [8]: http://jimjh.github.com/reaction-todos/app/assets/javascripts/application.js
+  [8]: https://github.com/jimjh/reaction-todos/blob/master/app/assets/javascripts/application.js
   [9]: http://jimjh.github.com/reaction-todos/app/assets/javascripts/init.html
   [0]: http://jimjh.github.com/reaction-todos/app/views/home/index.html.html

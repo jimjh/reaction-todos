@@ -1,6 +1,7 @@
 {
   "glob": ["README.md",
            "app/assets/javascripts/init.js",
+           "app/assets/javascripts/application.js",
            "config/routes.rb",
            "app/controllers/todos_controller.rb",
            "app/views/layouts/application.html.erb",
