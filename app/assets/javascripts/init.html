@@ -3,7 +3,9 @@
 
 <p><code>init</code> creates the app view and configures the model-view bindings.</p></div></div><div class="code"><div class="wrapper"><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="todoview">TodoView</h2>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="nx">Reaction</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">paths</span><span class="p">.</span><span class="nx">reaction</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:9292&#39;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="todoview">TodoView</h2>
 
 <p>Each TodoView displays a single todo model. Changes to the model are
 automatically reflected in the view via bindings.</p></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">TodoView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Each todo is displayed in a <code>li</code> tag.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>

@@ -116,6 +116,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                       "singleLineComment": ["//"],
                       "name": "JavaScript"
                     },
+                    "sourcePath": "/Users/codex/Documents/Development/Ruby/reaction-todos/app/assets/javascripts/application.js",
+                    "projectPath": "app/assets/javascripts/application.js",
+                    "targetPath": "app/assets/javascripts/application",
+                    "title": "application"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }, {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".js"],
+                      "pygmentsLexer": "javascript",
+                      "singleLineComment": ["//"],
+                      "name": "JavaScript"
+                    },
                     "sourcePath": "/Users/codex/Documents/Development/Ruby/reaction-todos/app/assets/javascripts/init.js",
                     "projectPath": "app/assets/javascripts/init.js",
                     "targetPath": "app/assets/javascripts/init",
